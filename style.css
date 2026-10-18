@@ -1,0 +1,87 @@
+/* 1. TOKENS: cambia aquí colores y fuentes */
+:root {
+  --fondo: #0e1116;
+  --panel: #161b22;
+  --panel2: #1f2733;
+  --texto: #e6edf3;
+  --suave: #8b98a9;
+  --acento: #6d8dff;
+  --ok: #3fb950;
+  --aviso: #d29922;
+  --error: #f85149;
+  --borde: #2a3342;
+  --fuente: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", "Fira Code", ui-monospace, Consolas, monospace;
+}
+
+/* 2. BASE */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+body { margin: 0; background: var(--fondo); color: var(--texto); font-family: var(--fuente); line-height: 1.65; }
+a { color: var(--acento); }
+img { max-width: 100%; height: auto; display: block; margin: 1rem 0; border: 1px solid var(--borde); border-radius: 10px; }
+h1 { font-size: clamp(1.9rem, 4.5vw, 3rem); line-height: 1.15; margin: 0 0 1rem; }
+h2 { margin: 0 0 .75rem; font-size: 1.6rem; }
+h3 { margin: 1.75rem 0 .5rem; }
+h4 { margin: 0 0 .25rem; }
+kbd, code { font-family: var(--mono); }
+kbd { background: var(--panel2); border: 1px solid var(--borde); border-radius: 4px; padding: 0 .35rem; font-size: .8rem; }
+button, select, input { font: inherit; color: var(--texto); background: var(--panel); border: 1px solid var(--borde); border-radius: 6px; padding: .4rem .8rem; }
+button { cursor: pointer; }
+:focus-visible { outline: 3px solid var(--acento); outline-offset: 2px; }
+
+/* 3. TOPBAR */
+.topbar { position: sticky; top: 0; z-index: 5; display: flex; align-items: center; gap: 1rem; padding: .7rem 1.25rem; background: var(--panel); border-bottom: 1px solid var(--borde); }
+.logo { font-weight: 700; color: var(--texto); text-decoration: none; margin-right: auto; }
+.entorno { display: flex; align-items: center; gap: .5rem; color: var(--suave); font-size: .9rem; }
+
+/* 4. LAYOUT: sidebar + contenido */
+.layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); max-width: 1100px; margin: 0 auto; }
+.sidebar { position: sticky; top: 3.6rem; align-self: start; padding: 1.5rem 1rem; }
+.sidebar nav { display: flex; flex-direction: column; gap: .15rem; }
+.sidebar a { color: var(--suave); text-decoration: none; padding: .35rem .6rem; border-radius: 6px; }
+.sidebar a:hover { background: var(--panel); color: var(--texto); }
+main { padding: 1.5rem 1.25rem 0; }
+section { margin-bottom: 3.5rem; max-width: 72ch; }
+section img, section .grid, .bloque { max-width: 100%; }
+
+/* 5. COMPONENTES */
+.hero { padding-top: 1.5rem; }
+.hero p { color: var(--suave); font-size: 1.1rem; }
+.acciones { display: flex; flex-wrap: wrap; gap: .6rem; }
+.btn { display: inline-block; text-decoration: none; padding: .5rem 1rem; border: 1px solid var(--borde); border-radius: 6px; color: var(--texto); background: var(--panel); }
+.btn.primario { background: var(--acento); border-color: var(--acento); color: #0e1116; font-weight: 600; }
+.grid { display: grid; gap: .8rem; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); margin-top: 1rem; }
+.card { background: var(--panel); border: 1px solid var(--borde); border-radius: 8px; padding: 1rem; }
+.card p { margin: 0; color: var(--suave); }
+.tokens { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; }
+.muestra { padding: .6rem 1rem; border: 1px solid var(--borde); border-radius: 6px; font-size: .9rem; }
+.estado { display: inline-block; font-family: var(--mono); font-size: .85rem; padding: .1rem .55rem; border-radius: 999px; border: 1px solid currentColor; }
+.estado.ok { color: var(--ok); } .estado.aviso { color: var(--aviso); } .estado.error { color: var(--error); }
+
+/* 6. CÓDIGO */
+.pestanas { display: flex; gap: .3rem; margin-top: 1rem; }
+.pestanas button.activa { background: var(--acento); border-color: var(--acento); color: #0e1116; }
+.bloque { position: relative; }
+.bloque #btn-copiar { position: absolute; top: .6rem; right: .6rem; font-size: .85rem; }
+pre { margin: .5rem 0 0; padding: 1rem; background: var(--panel); border: 1px solid var(--borde); border-radius: 8px; overflow-x: auto; font-family: var(--mono); font-size: .88rem; }
+.respuesta { white-space: pre-wrap; }
+
+/* 7. BUSCADOR */
+dialog { width: min(480px, 92vw); margin-top: 12vh; padding: 1rem; background: var(--panel); color: var(--texto); border: 1px solid var(--borde); border-radius: 10px; }
+dialog::backdrop { background: rgba(0,0,0,.6); }
+dialog input { width: 100%; }
+#resultados { list-style: none; margin: .6rem 0 0; padding: 0; }
+#resultados a { display: block; padding: .45rem .6rem; border-radius: 6px; text-decoration: none; color: var(--texto); }
+#resultados a:hover, #resultados a:focus { background: var(--panel2); }
+
+footer { max-width: 1100px; margin: 0 auto; padding: 1.5rem 1.25rem 2.5rem; color: var(--suave); border-top: 1px solid var(--borde); }
+
+/* 8. RESPONSIVE */
+@media (max-width: 760px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { position: static; padding-bottom: 0; }
+  .sidebar nav { flex-direction: row; flex-wrap: wrap; }
+  #btn-buscar kbd { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
