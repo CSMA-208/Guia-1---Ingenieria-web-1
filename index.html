@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DevPortal · Portal tecnológico</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- TOPBAR: logo, buscador (Ctrl+K), selector de entorno -->
+  <header class="topbar">
+    <a class="logo" href="#inicio">DevPortal</a>
+    <button id="btn-buscar" type="button">Buscar… <kbd>Ctrl K</kbd></button>
+    <label class="entorno">Entorno
+      <select id="entorno">
+        <option value="sandbox">Sandbox</option>
+        <option value="produccion">Producción</option>
+      </select>
+    </label>
+  </header>
+
+  <div class="layout">
+    <!-- SIDEBAR: navegación jerárquica -->
+    <aside class="sidebar">
+      <nav aria-label="Secciones">
+        <a href="#inicio">Inicio</a>
+        <a href="#arquitectura">Arquitectura</a>
+        <a href="#ux">Experiencia de usuario</a>
+        <a href="#ui">Interfaz visual</a>
+        <a href="#docs">Documentación</a>
+        <a href="#enlaces">Enlaces útiles</a>
+      </nav>
+    </aside>
+
+    <main>
+      <!-- 1. INICIO -->
+      <section id="inicio" class="hero">
+        <h1>Tu primera llamada a la API en menos de 2 minutos</h1>
+        <p>Un portal para desarrolladores con documentación, claves de acceso y estado de servicios en un solo lugar.</p>
+        <p class="acciones">
+          <a class="btn primario" href="#onboarding">Get Started</a>
+          <a class="btn" href="#docs">Ver documentación</a>
+          <a class="btn" href="#arquitectura">Ver arquitectura</a>
+        </p>
+      </section>
+
+      <!-- 2. ARQUITECTURA -->
+      <section id="arquitectura">
+        <h2>1. Arquitectura</h2>
+        <p>Para una primera versión conviene un <strong>monolito modular</strong> o una separación clara cliente-servidor (API REST o GraphQL). Frontend y backend se comunican en JSON y autentican con <a href="https://jwt.io/introduction" target="_blank" rel="noopener">JSON Web Tokens (JWT)</a>.</p>
+        <img src="img/arquitectura.svg" alt="Diagrama: el cliente envía peticiones con JWT a la API REST, que consulta la base de datos">
+        <h3>Mapa del sitio</h3>
+        <img src="img/sitemap.svg" alt="Mapa del sitio: Pública, Docs, Dashboard y Cuenta">
+        <div class="grid">
+          <article class="card"><h4>Landing</h4><p>Propuesta de valor, llamada a la acción y enlaces rápidos a la documentación.</p></article>
+          <article class="card"><h4>Sección pública</h4><p>Blog técnico, changelog y página de estado de servicios.</p></article>
+          <article class="card"><h4>Dashboard privado</h4><p>Perfil, API Keys, consumo de recursos y facturación.</p></article>
+          <article class="card"><h4>Centro de docs</h4><p>Guías, referencia de API y ejemplos de código.</p></article>
+        </div>
+      </section>
+
+      <!-- 3. UX -->
+      <section id="ux">
+        <h2>2. Experiencia de usuario</h2>
+        <p>Los desarrolladores valoran la velocidad: cada paso extra es fricción.</p>
+        <h3 id="onboarding">Flujo crítico: del registro a la primera llamada</h3>
+        <img src="img/flujo.svg" alt="Tres pasos: registro, API Key y primera llamada">
+        <ol>
+          <li><strong>Registro / login:</strong> con GitHub, Google o correo con verificación de un clic.</li>
+          <li><strong>Credenciales:</strong> guiar al usuario a generar su primera API Key de prueba.</li>
+          <li><strong>Sandbox:</strong> copiar un fragmento (cURL o JavaScript) y ver una respuesta exitosa.</li>
+        </ol>
+        <h3>Principios</h3>
+        <ul>
+          <li><strong>Copiar sin fricción:</strong> botón "Copiar" en cada bloque de código (pruébalo abajo).</li>
+          <li><strong>Errores claros:</strong> indicar el código HTTP y cómo solucionarlo.</li>
+        </ul>
+      </section>
+
+      <!-- 4. UI -->
+      <section id="ui">
+        <h2>3. Interfaz visual</h2>
+        <p>Inspirada en <a href="https://vercel.com/geist/introduction" target="_blank" rel="noopener">Vercel</a>, <a href="https://docs.stripe.com" target="_blank" rel="noopener">Stripe</a>, <a href="https://primer.style" target="_blank" rel="noopener">GitHub Primer</a> y <a href="https://supabase.com/docs" target="_blank" rel="noopener">Supabase</a>: limpia, minimalista y con modo oscuro nativo.</p>
+        <h3>Layout principal</h3>
+        <ul>
+          <li><strong>TopBar:</strong> logo, buscador global (<kbd>Ctrl</kbd> + <kbd>K</kbd>), selector de entorno y perfil.</li>
+          <li><strong>Sidebar:</strong> menú jerárquico (Guías, Autenticación, Endpoints, Configuración).</li>
+          <li><strong>Contenido:</strong> espacio amplio para texto, tablas o consolas.</li>
+          <li><strong>Panel derecho (opcional):</strong> ejemplos de código en pestañas.</li>
+        </ul>
+        <h3>Design tokens</h3>
+        <p>Tipografía: <a href="https://rsms.me/inter/" target="_blank" rel="noopener">Inter</a> o Roboto para la interfaz y <a href="https://www.jetbrains.com/lp/mono/" target="_blank" rel="noopener">JetBrains Mono</a> o Fira Code para el código.</p>
+        <div class="tokens">
+          <span class="muestra" style="background:#0e1116">Fondo</span>
+          <span class="muestra" style="background:#6d8dff;color:#0e1116">Acento</span>
+          <span class="muestra" style="background:#3fb950;color:#0e1116">Éxito</span>
+          <span class="muestra" style="background:#d29922;color:#0e1116">Aviso</span>
+          <span class="muestra" style="background:#f85149;color:#0e1116">Error</span>
+        </div>
+        <p><span class="estado ok">200 OK</span> <span class="estado aviso">429 Too Many Requests</span> <span class="estado error">401 Unauthorized</span> <span class="estado error">500 Server Error</span></p>
+      </section>
+
+      <!-- 5. DOCS -->
+      <section id="docs">
+        <h2>4. Documentación de ejemplo</h2>
+        <p>Cambia el entorno arriba y la clave del ejemplo se actualiza sola.</p>
+        <div class="pestanas" id="pestanas" role="tablist"></div>
+        <div class="bloque">
+          <button id="btn-copiar" type="button">Copiar</button>
+          <pre><code id="codigo"></code></pre>
+        </div>
+        <h3>Respuestas</h3>
+        <pre class="respuesta"><span class="estado ok">200 OK</span>
+{ "usuario": "ana", "plan": "gratis" }</pre>
+        <pre class="respuesta"><span class="estado error">401 Unauthorized</span>
+{ "error": "invalid_token", "ayuda": "Revisa que tu API Key esté activa y enviada en el encabezado Authorization." }</pre>
+      </section>
+
+      <!-- 6. ENLACES -->
+      <section id="enlaces">
+        <h2>Enlaces útiles</h2>
+        <ul class="enlaces">
+          <li><a href="https://developer.mozilla.org/es/" target="_blank" rel="noopener">MDN Web Docs</a> · referencia de HTML, CSS y JS</li>
+          <li><a href="https://javascript.info/" target="_blank" rel="noopener">javascript.info</a> · curso moderno de JavaScript</li>
+          <li><a href="https://developer.mozilla.org/es/docs/Web/HTTP/Status" target="_blank" rel="noopener">Códigos de estado HTTP</a></li>
+          <li><a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> · publica tu sitio gratis</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <footer>© 2026 DevPortal · <a href="#inicio">Volver arriba</a></footer>
+
+  <!-- BUSCADOR (Ctrl+K) -->
+  <dialog id="buscador">
+    <input id="q" type="search" placeholder="Buscar sección…" aria-label="Buscar sección">
+    <ul id="resultados"></ul>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
